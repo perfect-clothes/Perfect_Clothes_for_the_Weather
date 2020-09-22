@@ -3,13 +3,6 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 
-var moment = require('moment');
-var moment_timezone = require('moment-timezone');
-
-// 서울 현재 시간
-moment.tz.setDefault("Asia/Seoul");
-var date = moment().format('YYYY-MM-DD HH:mm:ss');
-
 // 서울, 대한민국 위치. default
 const COORD_LOC = {
     "latitude": "37.58",
@@ -18,7 +11,7 @@ const COORD_LOC = {
 
 // api 설정
 var API_KEY = "43ea79c81845dfc04efa811d2c3a59dc"
-var API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${COORD_LOC.latitude}&lon=${COORD_LOC.longitude}&appid=${API_KEY}`
+var API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${COORD_LOC.latitude}&lon=${COORD_LOC.longitude}&appid=${API_KEY}&units=metric`
 
 request(API_URL, {json: {key: 'value'}}, function(err, res, body){
     var data = {
