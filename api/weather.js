@@ -31,7 +31,7 @@ request(API_URL, {json: {key: 'value'}}, function(err, res, body){
     };
 
     router.get('/', function(req, res){
-        res.json(data);
+        res.send(data);
     });
 });
 
