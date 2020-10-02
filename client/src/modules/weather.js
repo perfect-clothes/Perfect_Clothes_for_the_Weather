@@ -7,16 +7,16 @@ const LOAD_WEATHER_SUCCESS = 'weather/LOAD_WEATHER_SUCCESS';
 const LOAD_WEATHER_FAILURE = 'weather/LOAD_WEATHER_FAILURE';
 
 export const loadWeather = createAction(LOAD_WEATHER);
-function* loadWeatherSaga(action) {
+function* loadWeatherSaga() {
     try {
-        const response = yield call(loadAPI.load, action.payload);
+        const response = yield call(loadAPI.load);
         yield put({
-            type: 'LOAD_WEATHER_SUCCESS',
+            type: LOAD_WEATHER_SUCCESS,
             payload: response.data
         });
     } catch (e) {
         yield put({
-            type: 'LOAD_WEATHER_FAILURE',
+            type: LOAD_WEATHER_FAILURE,
             error: true,
             payload: e
         })
@@ -27,20 +27,26 @@ export function* weatherSaga() {
 }
 
 const initialState = {
-    weather: null,
+    weatherData: {
+        weather: '',
+        city: '',
+        country: '',
+        temp: 0,
+        humid: 0
+    },
     error: null
 };
 
 const weather = handleActions({
-    [LOAD_WEATHER_SUCCESS]: (state, {payload: weather}) => ({
+    [LOAD_WEATHER_SUCCESS]: (state, action) => ({
         ...state,
-        weather: weather,
+        weatherData: action.payload,
         error: null
     }),
-    [LOAD_WEATHER_FAILURE]: (state, {payload: error}) => ({
+    [LOAD_WEATHER_FAILURE]: (state, action) => ({
         ...state,
-        weather: null,
-        error: error
+        error: action.payload,
+        weatherData: null
     })
 }, initialState);
 
