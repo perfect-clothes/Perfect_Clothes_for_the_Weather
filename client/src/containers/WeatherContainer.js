@@ -5,13 +5,8 @@ import {loadWeather} from "../modules/weather";
 
 const WeatherContainer = () => {
     const dispatch = useDispatch();
-    const {country, city, date, weather, temp, humid, error} = useSelector(({weather}) => ({
-        country: weather.country,
-        city: weather.city,
-        date: weather.date,
-        weather: weather.weather,
-        temp: weather.temp,
-        humid: weather.humid,
+    const {weatherData, error} = useSelector(({weather}) => ({
+        weatherData: weather.weatherData,
         error: weather.error
     }));
 
@@ -21,12 +16,7 @@ const WeatherContainer = () => {
 
     return(
         <Weather
-            country={country}
-            city={city}
-            date={date}
-            weather={weather}
-            temp={temp}
-            humid={humid}
+            weatherData={weatherData}
             error={error}
         />
     );
