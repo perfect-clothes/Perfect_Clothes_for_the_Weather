@@ -3,7 +3,9 @@ import WeatherContainer from "../containers/WeatherContainer";
 
 const Main = () => {
     return(
-       <WeatherContainer/>
+        <>
+            <WeatherContainer/>
+        </>
     );
 }
 
