@@ -40,7 +40,6 @@ const WeatherSwitch = (weather) => {
 };
 
 const Weather = ({weatherData, error}) => {
-
     if(error) {
         return <div>에러 발생!</div>
     }
