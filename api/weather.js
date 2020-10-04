@@ -16,8 +16,8 @@ function setLocation(req, res, next) {
         next();
     }
     else {
-        COORD_LOC.latitude = req[0];
-        COORD_LOC.longitude = req[1];
+        COORD_LOC.latitude = req.body.latitude;
+        COORD_LOC.longitude = req.body.longitude;
         next();
     }
 };
@@ -63,8 +63,6 @@ function getWeather(req, res, next) {
 function sendData(req, res) {
     res.json(weatherData);
     console.log('sendData compelte..!');
-
-    setInterval(getWeather, 3000);
 };
 
 router.get('/', setLocation, getWeather, sendData);
