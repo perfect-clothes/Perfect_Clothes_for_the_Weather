@@ -50,4 +50,7 @@ function getWeatherData() {
     });
 };
 
+getWeatherData(); // 최초 실행
+setInterval(getWeatherData, 10800000); // 3 시간마다 반복하기 (1000ms = 1s)
+
 module.exports = router;
