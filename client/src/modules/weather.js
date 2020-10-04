@@ -6,10 +6,10 @@ const LOAD_WEATHER = 'weather/LOAD_WEATHER';
 const LOAD_WEATHER_SUCCESS = 'weather/LOAD_WEATHER_SUCCESS';
 const LOAD_WEATHER_FAILURE = 'weather/LOAD_WEATHER_FAILURE';
 
-export const loadWeather = createAction(LOAD_WEATHER);
-function* loadWeatherSaga() {
+export const loadWeather = createAction(LOAD_WEATHER, ({latitude, longitude}) => ({latitude, longitude}));
+function* loadWeatherSaga(action) {
     try {
-        const response = yield call(loadAPI.load);
+        const response = yield call(loadAPI.load, action.payload);
         yield put({
             type: LOAD_WEATHER_SUCCESS,
             payload: response.data

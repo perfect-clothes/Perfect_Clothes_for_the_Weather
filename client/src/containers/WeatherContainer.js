@@ -11,7 +11,15 @@ const WeatherContainer = () => {
     }));
 
     useEffect(() => {
-        dispatch(loadWeather());
+        navigator.geolocation.watchPosition(function(pos) {
+            const latitude = pos.coords.latitude;
+            const longitude = pos.coords.longitude;
+            console.log({latitude, longitude});
+            dispatch(loadWeather({latitude, longitude}));
+        }, function(e){
+            alert("위치 정보를 받아올 수 없습니다.");
+            console.log(e);
+        });
     }, [dispatch]);
 
     return(
