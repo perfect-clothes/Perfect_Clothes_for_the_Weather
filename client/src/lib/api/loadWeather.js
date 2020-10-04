@@ -1,4 +1,4 @@
 import client from "./client";
 
 
-export const load = () => client.get('/api');
+export const load = ({latitude, longitude}) => client.post('/api', {latitude, longitude});
