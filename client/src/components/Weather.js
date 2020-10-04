@@ -2,6 +2,7 @@ import React from "react";
 import WeatherIconSwitch from "../lib/WeatherIconSwitch";
 
 const Weather = ({weatherData, error}) => {
+    
     if(error) {
         return <div>에러 발생!</div>
     }
