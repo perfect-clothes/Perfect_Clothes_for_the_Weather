@@ -23,4 +23,3 @@ const WeatherContainer = () => {
 };
 
 export default WeatherContainer;
-

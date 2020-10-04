@@ -1,16 +1,7 @@
 import React from "react";
-
-const WeatherSwitch = (weather) => {
-    switch (weather) {
-        case 'Clouds' :
-            return <i className="wi wi-owm-804"></i>
-        default:
-            return <div>맑음</div>
-    }
-};
+import WeatherIconSwitch from "../lib/WeatherIconSwitch";
 
 const Weather = ({weatherData, error}) => {
-
     if(error) {
         return <div>에러 발생!</div>
     }
@@ -24,7 +15,7 @@ const Weather = ({weatherData, error}) => {
                 도시 : {weatherData.city}
             </div>
             <div>
-                날씨 : {WeatherSwitch(weatherData.weather)}
+                날씨 : {WeatherIconSwitch(weatherData.weather)}
             </div>
             <div>
                 습도 : {weatherData.humid}
