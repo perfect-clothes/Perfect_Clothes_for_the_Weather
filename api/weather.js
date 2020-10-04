@@ -63,8 +63,6 @@ function getWeather(req, res, next) {
 function sendData(req, res) {
     res.json(weatherData);
     console.log('sendData compelte..!');
-
-    setInterval(getWeather, 3000);
 };
 
 router.get('/', setLocation, getWeather, sendData);
