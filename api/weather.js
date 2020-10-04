@@ -9,17 +9,17 @@ const COORD_LOC = {
     "longitude": "127",
 };
 
-// api 설정
-const API_KEY = "43ea79c81845dfc04efa811d2c3a59dc"
-const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${COORD_LOC.latitude}&lon=${COORD_LOC.longitude}&appid=${API_KEY}&units=metric`
-
-const OPTIONS = {
-    uri: API_URL,
-    method: 'GET',
-    body: {
-        key: 'value'
-    },
-    json: true
+// 위치 설정 함수
+function setLocation(req, res, next) {
+    if (Object.keys(req.body).length == 0) {
+        console.log('req is empty..');
+        next();
+    }
+    else {
+        COORD_LOC.latitude = req[0];
+        COORD_LOC.longitude = req[1];
+        next();
+    }
 };
 
 // 현재 날씨 데이터
@@ -32,7 +32,21 @@ let weatherData = {
     humid: 'NULL'
 };
 
-function getWeatherData() {
+function getWeather(req, res, next) {
+    // api 설정
+    const API_KEY = "43ea79c81845dfc04efa811d2c3a59dc"
+    const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${COORD_LOC.latitude}&lon=${COORD_LOC.longitude}&appid=${API_KEY}&units=metric`
+
+    const OPTIONS = {
+        uri: API_URL,
+        method: 'GET',
+        body: {
+            key: 'value'
+        },
+        json: true
+    };
+
+    // api 호출
     request(OPTIONS, function (err, res, body) {
         weatherData.country = body.sys.country;
         weatherData.city = body.name;
@@ -41,16 +55,18 @@ function getWeatherData() {
         weatherData.temp = body.main.temp;
         weatherData.humid = body.main.humidity;
 
-        //console.log(weatherData);
-
-        router.get('/', function (req, res) {
-            res.json(weatherData);
-            //console.log('response compelte!');
-        });
+        console.log('getWeather compelte..!');
+        next();
     });
 };
 
-getWeatherData(); // 최초 실행
-setInterval(getWeatherData, 10800000); // 3 시간마다 반복하기 (1000ms = 1s)
+function sendData(req, res) {
+    res.json(weatherData);
+    console.log('sendData compelte..!');
+
+    setInterval(getWeather, 3000);
+};
+
+router.get('/', setLocation, getWeather, sendData);
 
 module.exports = router;
