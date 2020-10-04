@@ -20,7 +20,16 @@ const COORD_LOC = {
 var API_KEY = "43ea79c81845dfc04efa811d2c3a59dc"
 var API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${COORD_LOC.latitude}&lon=${COORD_LOC.longitude}&appid=${API_KEY}`
 
-request(API_URL, {json: {key: 'value'}}, function(err, res, body){
+const OPTIONS = {
+    uri: API_URL,
+    method: 'GET',
+    body: {
+        key: 'value'
+    },
+    json: true
+};
+
+request(OPTIONS, function(err, res, body){
     var data = {
         country: body.sys.country,
         city: body.name,
