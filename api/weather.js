@@ -1,14 +1,7 @@
 // 모듈 추출
-var express = require('express');
-var request = require('request');
-var router = express.Router();
-
-var moment = require('moment');
-var moment_timezone = require('moment-timezone');
-
-// 서울 현재 시간
-moment.tz.setDefault("Asia/Seoul");
-var date = moment().format('YYYY-MM-DD HH:mm:ss');
+const express = require('express');
+const request = require('request');
+const router = express.Router();
 
 // 서울, 대한민국 위치. default
 const COORD_LOC = {
@@ -17,22 +10,47 @@ const COORD_LOC = {
 };
 
 // api 설정
-var API_KEY = "43ea79c81845dfc04efa811d2c3a59dc"
-var API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${COORD_LOC.latitude}&lon=${COORD_LOC.longitude}&appid=${API_KEY}`
+const API_KEY = "43ea79c81845dfc04efa811d2c3a59dc"
+const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${COORD_LOC.latitude}&lon=${COORD_LOC.longitude}&appid=${API_KEY}&units=metric`
 
-request(API_URL, {json: {key: 'value'}}, function(err, res, body){
-    var data = {
-        country: body.sys.country,
-        city: body.name,
-        data: data,
-        weather: body.weather[0].main,
-        temp: body.main.temp,
-        humid: body.main.humidity
-    };
+const OPTIONS = {
+    uri: API_URL,
+    method: 'GET',
+    body: {
+        key: 'value'
+    },
+    json: true
+};
 
-    router.get('/', function(req, res){
-        res.send(data);
+// 현재 날씨 데이터
+let weatherData = {
+    country: 'kr',
+    city: 'seoul',
+    weather: 'NULL',
+    description: 'NULL',
+    temp: 'NULL',
+    humid: 'NULL'
+};
+
+function getWeatherData() {
+    request(OPTIONS, function (err, res, body) {
+        weatherData.country = body.sys.country;
+        weatherData.city = body.name;
+        weatherData.weather = body.weather[0].main;
+        weatherData.description = body.weather[0].description;
+        weatherData.temp = body.main.temp;
+        weatherData.humid = body.main.humidity;
+
+        //console.log(weatherData);
+
+        router.get('/', function (req, res) {
+            res.json(weatherData);
+            //console.log('response compelte!');
+        });
     });
-});
+};
+
+getWeatherData(); // 최초 실행
+setInterval(getWeatherData, 10800000); // 3 시간마다 반복하기 (1000ms = 1s)
 
 module.exports = router;

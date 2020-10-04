@@ -1,15 +1,18 @@
 // Express 기본 모듈 호출
-var express = require('express');
-var http = require('http');
-var cors = require('cors');
+const express = require('express');
+const http = require('http');
+const cors = require('cors');
+
+// 모듈 호출 (./api)
+let weather = require('./api/weather');
 
 // Express 미들웨어 호출
-var bodyParser = require('body-parser');
-var static = require('serve-static');
+const bodyParser = require('body-parser');
+const static = require('serve-static');
 
 // 웹 서버 생성
-var app = express();
-var server = http.createServer(app);
+const app = express();
+const server = http.createServer(app);
 
 // 기본 속성 설정
 app.set('port', process.env.PORT || 8080);
@@ -22,7 +25,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // 라우트 수행
-app.use('/api', require('./api/weather'));
+app.use('/api', weather);
 
 // 웹 서버 실행
 server.listen(app.get('port'), function(){
