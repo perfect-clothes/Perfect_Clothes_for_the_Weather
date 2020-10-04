@@ -16,8 +16,8 @@ function setLocation(req, res, next) {
         next();
     }
     else {
-        COORD_LOC.latitude = req[0];
-        COORD_LOC.longitude = req[1];
+        COORD_LOC.latitude = req.body.latitude;
+        COORD_LOC.longitude = req.body.longitude;
         next();
     }
 };
