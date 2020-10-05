@@ -22,8 +22,6 @@ const WeatherIconSwitch = (weather) => {
             return <i className="wi wi-owm-741"></i>
         case 'Sand':
             return <i className="wi wi-owm-761"></i>
-        case 'Dust':
-            return <i className="wi wi-owm-761"></i>
         case 'Ash':
             return <i className="wi wi-owm-762"></i>
         case 'Squall':
