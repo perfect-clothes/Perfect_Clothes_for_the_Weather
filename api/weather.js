@@ -39,7 +39,7 @@ function getWeather(req, res, next) {
 
     const OPTIONS = {
         uri: API_URL,
-        method: 'GET',
+        method: 'POST',
         body: {
             key: 'value'
         },
