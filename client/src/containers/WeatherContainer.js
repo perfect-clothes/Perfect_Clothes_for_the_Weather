@@ -11,7 +11,7 @@ const WeatherContainer = () => {
     }));
 
     useEffect(() => {
-        navigator.geolocation.watchPosition(function(pos) {
+        navigator.geolocation.getCurrentPosition(function(pos) {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
             console.log({latitude, longitude});
