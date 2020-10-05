@@ -65,6 +65,6 @@ function sendData(req, res) {
     console.log('sendData compelte..!');
 };
 
-router.get('/', setLocation, getWeather, sendData);
+router.post('/', setLocation, getWeather, sendData);
 
 module.exports = router;
