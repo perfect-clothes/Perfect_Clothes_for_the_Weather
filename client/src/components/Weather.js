@@ -1,7 +1,7 @@
 import React from "react";
 import WeatherIconSwitch from "../lib/WeatherIconSwitch";
 
-const Weather = ({weatherData, error}) => {
+const Weather = ({weatherData, clothesData, error}) => {
     
     if(error) {
         return <div>에러 발생!</div>
@@ -23,6 +23,21 @@ const Weather = ({weatherData, error}) => {
             </div>
             <div>
                 온도 : {weatherData.temp}
+            </div>
+            <div>
+                top : {clothesData.top}
+            </div>
+            <div>
+                bottom : {clothesData.bottom}
+            </div>
+            <div>
+                outer : {clothesData.outer}
+            </div>
+            <div>
+                inner : {clothesData.inner}
+            </div>
+            <div>
+                item : {clothesData.item}
             </div>
         </div>
     );
