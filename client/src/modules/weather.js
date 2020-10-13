@@ -34,19 +34,28 @@ const initialState = {
         temp: 0,
         humid: 0
     },
+    clothesData: {
+        top: '',
+        bottom: '',
+        outer: '',
+        inner: '',
+        item: ''
+    },
     error: null
 };
 
 const weather = handleActions({
-    [LOAD_WEATHER_SUCCESS]: (state, action) => ({
+    [LOAD_WEATHER_SUCCESS]: (state, {payload: weatherData, clothesData}) => ({
         ...state,
-        weatherData: action.payload,
+        weatherData: weatherData,
+        clothesData: clothesData,
         error: null
     }),
     [LOAD_WEATHER_FAILURE]: (state, action) => ({
         ...state,
         error: action.payload,
-        weatherData: null
+        weatherData: null,
+        clothesData: null
     })
 }, initialState);
 
