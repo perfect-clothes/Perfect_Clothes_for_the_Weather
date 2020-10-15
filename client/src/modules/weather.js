@@ -45,10 +45,10 @@ const initialState = {
 };
 
 const weather = handleActions({
-    [LOAD_WEATHER_SUCCESS]: (state, {payload: weatherData, clothesData}) => ({
+    [LOAD_WEATHER_SUCCESS]: (state, action) => ({
         ...state,
-        weatherData: weatherData,
-        clothesData: clothesData,
+        weatherData: action.payload.weatherData,
+        clothesData: action.payload.clothesData,
         error: null
     }),
     [LOAD_WEATHER_FAILURE]: (state, action) => ({
