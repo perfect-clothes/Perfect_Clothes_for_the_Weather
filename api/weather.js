@@ -1,43 +1,20 @@
 // 모듈 추출
 const express = require('express');
 const request = require('request');
+const clothes = require('./clothes');
+
 const router = express.Router();
 
-// 서울, 대한민국 위치. default
-const COORD_LOC = {
-    "latitude": "37.58",
-    "longitude": "127",
-};
 
-// 위치 설정 함수
-function setLocation(req, res, next) {
-    if (Object.keys(req.body).length == 0) {
-        console.log('req is empty..');
-        next();
-    }
-    else {
-        COORD_LOC.latitude = req.body.latitude;
-        COORD_LOC.longitude = req.body.longitude;
-        next();
-    }
-};
+// getWeather() : 날씨 가져오는 콜백
+let getWeather = (req, res, next) => {
+    console.log(req.body);
 
-// 현재 날씨 데이터
-let weatherData = {
-    country: 'kr',
-    city: 'seoul',
-    weather: 'NULL',
-    description: 'NULL',
-    temp: 'NULL',
-    humid: 'NULL'
-};
-
-function getWeather(req, res, next) {
-    // api 설정
-    const API_KEY = "43ea79c81845dfc04efa811d2c3a59dc"
-    const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${COORD_LOC.latitude}&lon=${COORD_LOC.longitude}&appid=${API_KEY}&units=metric`
-
-    const OPTIONS = {
+    const latitude = req.body.latitude; // 위도
+    const longitude = req.body.longitude; // 경도
+    const API_KEY = "43ea79c81845dfc04efa811d2c3a59dc" // API key
+    const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric` // API URL
+    const OPTIONS = { // API 요청 옵션
         uri: API_URL,
         method: 'GET',
         body: {
@@ -46,8 +23,18 @@ function getWeather(req, res, next) {
         json: true
     };
 
-    // api 호출
-    request(OPTIONS, function (err, res, body) {
+    // 현재 날씨 데이터
+    let weatherData = {
+        country: 'kr',
+        city: 'seoul',
+        weather: 'NULL',
+        description: 'NULL',
+        temp: 'NULL',
+        humid: 'NULL',
+    };
+
+    // API 호출
+    request(OPTIONS, (err, row, body) => {
         weatherData.country = body.sys.country;
         weatherData.city = body.name;
         weatherData.weather = body.weather[0].main;
@@ -55,16 +42,16 @@ function getWeather(req, res, next) {
         weatherData.temp = body.main.temp;
         weatherData.humid = body.main.humidity;
 
-        console.log('getWeather compelte..!');
+        req.weatherData = weatherData; // 다음 콜백 req 값음 지정
+        // req.body = weatherData (X)
+        // req 내부에 원래 있던 변수 쓰면 안 됨. 새로 만들어야 함
+        // 항상 체크 필요 (다음 콜백에서)
+
+
         next();
     });
 };
 
-function sendData(req, res) {
-    res.json(weatherData);
-    console.log('sendData compelte..!');
-};
-
-router.post('/', setLocation, getWeather, sendData);
+router.post('/', getWeather, clothes.clothesLookup);
 
 module.exports = router;
