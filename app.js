@@ -4,7 +4,8 @@ const http = require('http');
 const cors = require('cors');
 
 // 모듈 호출 (./api)
-let weather = require('./api/weather');
+let curWeather = require('./api/curWeather');
+let allWeather = require('./api/allWeather');
 
 // Express 미들웨어 호출
 const bodyParser = require('body-parser');
@@ -25,7 +26,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // 라우트 수행
-app.use('/api', weather);
+app.use('/api/curWeather', curWeather);
+app.use('/api/allWeather', allWeather);
 
 // 웹 서버 실행
 server.listen(app.get('port'), function(){
