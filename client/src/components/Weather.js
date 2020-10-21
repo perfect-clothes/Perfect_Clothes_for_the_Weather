@@ -10,7 +10,6 @@ const ContainerBlock = styled.div`
     height: 400px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
 `;
 //날짜
 const DateBlock = styled.div`

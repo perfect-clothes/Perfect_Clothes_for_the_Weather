@@ -43,7 +43,7 @@ const RecommendBlock = styled.div `
         border-radius: 4px 4px 0 0;
     }    
     :last-child {
-        margin-bottom: 700px;
+        margin-bottom: 60px;
         border-radius: 0 0 4px 4px;
     }        
 `;
