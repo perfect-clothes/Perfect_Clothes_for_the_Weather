@@ -34,7 +34,7 @@ let getWeather = (req, res, next) => {
     };
 
     // API 호출
-    request(OPTIONS, (err, row, body) => {
+    request(OPTIONS, (err, raw, body) => {
         weatherData.country = body.sys.country;
         weatherData.city = body.name;
         weatherData.weather = body.weather[0].main;
