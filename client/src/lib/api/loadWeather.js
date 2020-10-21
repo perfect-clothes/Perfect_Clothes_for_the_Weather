@@ -1,4 +1,4 @@
 import client from "./client";
 
 
-export const load = ({latitude, longitude}) => client.post('/api', {latitude, longitude});
+export const load = ({latitude, longitude}) => client.post('/api/curWeather', {latitude, longitude});
