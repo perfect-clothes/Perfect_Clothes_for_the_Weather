@@ -53,7 +53,7 @@ let getWeather = (req, res, next) => {
 
             if (date >= today) {
                 let weatherData = {
-                    date: date,
+                    date: String(date).substring(0, 10),
                     time: 'NULL',
                     weather: 'NULL',
                     description: 'NULL',
