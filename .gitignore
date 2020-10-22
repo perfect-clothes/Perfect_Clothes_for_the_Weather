@@ -1,5 +1,6 @@
 # Apple desktop service store
 .DS_Store
+
 .idea
 No newline at end of file
 
@@ -11,3 +12,4 @@ node_modules/
 
 # dotenv environment variables file
 .env
+

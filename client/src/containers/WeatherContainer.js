@@ -5,11 +5,11 @@ import {loadWeather} from "../modules/weather";
 
 const WeatherContainer = () => {
     const dispatch = useDispatch();
-    const {weatherData, clothesData, error} = useSelector(({weather}) => ({
+    const {weatherData, error} = useSelector(({weather}) => ({
         weatherData: weather.weatherData,
-        clothesData: weather.clothesData,
         error: weather.error
     }));
+    //기본 위치 설정
     const defaultLatitude = 37.58;
     const defaultLongitude = 127;
 
@@ -29,7 +29,6 @@ const WeatherContainer = () => {
     return(
         <Weather
             weatherData={weatherData}
-            clothesData={clothesData}
             error={error}
         />
     );

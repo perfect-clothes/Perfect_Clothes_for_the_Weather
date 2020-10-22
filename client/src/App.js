@@ -1,12 +1,31 @@
 import React from 'react';
-import './App.css';
 import Main from "./pages/Main";
 import {Route} from 'react-router-dom';
+import styled, {css} from 'styled-components';
+import night from './Assets/background/night.png';
+import daytime from './Assets/background/daytime.png';
+import {getTime} from "./lib/GetDateTime";
+
+const ContainerBlock = styled.div` 
+    ${props => props.time > 6 && props.time < 19 ?      //7시부터 18시까지는 주간, 19시부터 6시까지 밤으로 배경 설정
+    css `
+        background-image: url(${daytime});
+    ` :
+    css `
+        background-image: url(${night});
+    `}
+    background-size: cover;
+`;
 
 const App = () => {
-  return(
-      <Route component={Main} path='/' exact />
-  );
+    //현재 시간을 불러옴
+    const {hour} = getTime();
+
+    return (
+        <ContainerBlock time={hour}>
+            <Route component={Main} path='/' exact/>
+        </ContainerBlock>
+    );
 }
 
 

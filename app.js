@@ -2,12 +2,14 @@
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
+
 require('dotenv').config();
 
 // 모듈 호출 (./api)
 let curWeather = require('./api/curWeather');
 let allWeather = require('./api/allWeather');
 let news = require('./api/news');
+
 
 // Express 미들웨어 호출
 const bodyParser = require('body-parser');
@@ -16,6 +18,7 @@ const static = require('serve-static');
 // 웹 서버 생성
 const app = express();
 const server = http.createServer(app);
+
 
 // bodyParser 사용
 app.use(bodyParser.urlencoded({extended : false}));
