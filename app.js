@@ -3,8 +3,13 @@ const express = require('express');
 const http = require('http');
 const cors = require('cors');
 
+require('dotenv').config();
+
 // 모듈 호출 (./api)
-let weather = require('./api/weather');
+let curWeather = require('./api/curWeather');
+let allWeather = require('./api/allWeather');
+let news = require('./api/news');
+
 
 // Express 미들웨어 호출
 const bodyParser = require('body-parser');
@@ -14,8 +19,6 @@ const static = require('serve-static');
 const app = express();
 const server = http.createServer(app);
 
-// 기본 속성 설정
-app.set('port', process.env.PORT || 8080);
 
 // bodyParser 사용
 app.use(bodyParser.urlencoded({extended : false}));
@@ -25,9 +28,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // 라우트 수행
-app.use('/api', weather);
+app.use('/api/curWeather', curWeather);
+app.use('/api/allWeather', allWeather);
+app.use('/api/news', news);
 
 // 웹 서버 실행
-server.listen(app.get('port'), function(){
-    console.log('server start ...' + app.get('port'));
+server.listen(process.env.PORT, () => {
+    console.log(`server start ... ${process.env.PORT}`);
 });
