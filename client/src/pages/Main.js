@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import CitySearch from "../components/CitySearch";
 import RecommendContainer from "../containers/RecommendContainer";
 import AllWeatherContainer from "../containers/AllWeatherContainer";
+import NewsContainer from "../containers/NewsContainer";
 
 const Main = () => {
     return(
@@ -13,6 +14,7 @@ const Main = () => {
             <WeatherContainer/>
             <RecommendContainer/>
             <AllWeatherContainer/>
+            <NewsContainer/>
         </>
     );
 }
