@@ -36,13 +36,13 @@ const RecommendBlock = styled.div `
     font-weight: 700;
     color: #373a40;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    :nth-child(odd) {
+    &:nth-child(odd) {
         background: #ebebeb;
     }
-    :nth-child(2) {
+    &:nth-child(2) {
         border-radius: 4px 4px 0 0;
     }    
-    :last-child {
+    &:last-child {
         margin-bottom: 60px;
         border-radius: 0 0 4px 4px;
     }        
