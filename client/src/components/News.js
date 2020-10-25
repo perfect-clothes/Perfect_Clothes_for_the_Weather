@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Replaced from "../lib/Replaced";
 import ContainerBlock from "./common/ContainerBlock";
 import TitleBlock from "./common/TitleBlock";
+import Spinner from "./common/Spinner";
 
 const NewsBlock = styled.div`
     background: white;
@@ -55,7 +56,7 @@ const newsData = [
     }
 ];
 
-const News = (/*{newsData, error}*/) => {
+const News = ({/*newsData, error, loading*/loading}) => {
     //에러 처리
 
     return (
@@ -63,7 +64,12 @@ const News = (/*{newsData, error}*/) => {
             <TitleBlock>
                 <h2>News</h2>
             </TitleBlock>
-            {newsData.map(news => (
+            {loading && (
+                <NewsBlock>
+                    <Spinner/>
+                </NewsBlock>
+            )}
+            {newsData && newsData.map(news => (
                 <NewsBlock>
                     <Title>
                         <a href={news.link} target='_blank'>

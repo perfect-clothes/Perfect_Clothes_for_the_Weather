@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import WeatherIconSwitch from "../lib/WeatherIconSwitch";
 import ContainerBlock from "./common/ContainerBlock";
 import TitleBlock from "./common/TitleBlock";
+import Spinner from "./common/Spinner";
 
 const AllWeatherBlock = styled.div`
     background: white;
@@ -58,6 +59,7 @@ const HumidBlock = styled.div`
 `;
 
 //임시 데이터
+/*
 const allWeatherData = [
     {
         time: "15:00:00",
@@ -108,8 +110,8 @@ const allWeatherData = [
         humid: 40
     }
 ]
-
-const AllWeather = (/*{allWeatherData, error}*/) => {
+*/
+const AllWeather = ({allWeatherData, error, loading}) => {
     //에러 구현해야함
 
     return (
@@ -117,8 +119,13 @@ const AllWeather = (/*{allWeatherData, error}*/) => {
             <TitleBlock>
                 <h2>Today's weather</h2>
             </TitleBlock>
-            <AllWeatherBlock>
-                {allWeatherData.map(data => (
+            {loading && (
+                <AllWeatherBlock>
+                    <Spinner/>
+                </AllWeatherBlock>
+            )}
+            {allWeatherData && allWeatherData.map(data => (
+                <AllWeatherBlock>
                     <WeatherInfoBlock>
                         <TimeBlock>{data.time.slice(0, 5)}</TimeBlock>
                         <IconBlock>
@@ -129,8 +136,8 @@ const AllWeather = (/*{allWeatherData, error}*/) => {
                             <i className='wi wi-raindrop'> {data.humid}%</i>
                         </HumidBlock>
                     </WeatherInfoBlock>
-                ))}
-            </AllWeatherBlock>
+                </AllWeatherBlock>
+            ))}
         </ContainerBlock>
     );
 };

@@ -4,6 +4,7 @@ import WeatherIconSwitch from "../lib/WeatherIconSwitch";
 import {getDate} from "../lib/GetDateTime";
 import ContainerBlock from "./common/ContainerBlock";
 import TitleBlock from "./common/TitleBlock";
+import Spinner from "./common/Spinner";
 
 //날씨
 const WeatherBlock = styled.div`
@@ -51,14 +52,36 @@ const Humid = styled.div`
     font-size: 30px;
     padding-top: 20px;
 `;
-
-
-const Weather = (/*{weatherData, error}*/) => {
+//임시 데이터
+/*
+const weatherData = {
+    weather: 'Clouds',
+    city: 'Seoul',
+    country: 'kr',
+    temp: 16,
+    humid: 50
+};
+*/
+const Weather = ({weatherData, error, loading}) => {
     /*if(error) {
         //모달 추가 해야함
         return <div>에러 발생!</div>
     }*/
     const {year, month, date, day} = getDate();
+
+    if (loading) {
+        return (
+            <ContainerBlock>
+                <TitleBlock>
+                    <h2>{year}년 {month}월 {date}일 {day} </h2>
+                </TitleBlock>
+                <WeatherBlock>
+
+                </WeatherBlock>
+            </ContainerBlock>
+        );
+    }
+
 
     return (
         //나중에 데이터 받아오도록 수정
@@ -66,16 +89,23 @@ const Weather = (/*{weatherData, error}*/) => {
             <TitleBlock>
                 <h2>{year}년 {month}월 {date}일 {day} </h2>
             </TitleBlock>
-            <WeatherBlock>
-                <Icon>
-                    {WeatherIconSwitch('Clouds')}
-                </Icon>
-                <City>Seoul, kr</City>
-                <Temp>16°</Temp>
-                <Humid>
-                    <i className='wi wi-raindrop'> 50%</i>
-                </Humid>
-            </WeatherBlock>
+            {loading && (
+                <WeatherBlock>
+                    <Spinner/>
+                </WeatherBlock>
+            )}
+            {weatherData && (
+                <WeatherBlock>
+                    <Icon>
+                        {WeatherIconSwitch(weatherData.weather)}
+                    </Icon>
+                    <City>{weatherData.city}</City>
+                    <Temp>{weatherData.temp}°</Temp>
+                    <Humid>
+                        <i className='wi wi-raindrop'> {weatherData.humid}%</i>
+                    </Humid>
+                </WeatherBlock>
+            )}
         </ContainerBlock>
     );
 };

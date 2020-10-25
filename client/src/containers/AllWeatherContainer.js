@@ -3,9 +3,10 @@ import {useSelector} from "react-redux";
 import AllWeather from "../components/AllWeather";
 
 const AllWeatherContainer = () => {
-    const {allWeatherData, error} = useSelector(({allWeather}) => ({
+    const {allWeatherData, error, loading} = useSelector(({allWeather, loading}) => ({
         allWeatherData: allWeather.allWeatherData,
-        error: allWeather.error
+        error: allWeather.error,
+        loading: loading['allWeather/LOAD_ALL_WEATHER']
     }));
 
     return(
@@ -13,6 +14,7 @@ const AllWeatherContainer = () => {
             <AllWeather
                 allWeatherData={allWeatherData}
                 error={error}
+                loading={loading}
             />
         </div>
     );

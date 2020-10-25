@@ -3,9 +3,10 @@ import {useSelector} from "react-redux";
 import Recommend from "../components/Recommend";
 
 const RecommendContainer = () => {
-    const {clothesData, error} = useSelector(({weather}) => ({
+    const {clothesData, error, loading} = useSelector(({weather, loading}) => ({
         clothesData: weather.clothesData,
-        error: weather.error
+        error: weather.error,
+        loading: loading['weather/LOAD_WEATHER']
     }));
 
     return(
@@ -13,6 +14,7 @@ const RecommendContainer = () => {
             <Recommend
                 clothesData={clothesData}
                 error={error}
+                loading={loading}
             />
         </div>
     );
