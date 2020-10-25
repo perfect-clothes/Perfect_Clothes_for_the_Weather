@@ -8,6 +8,7 @@ const LOAD_NEWS_SUCCESS = 'news/LOAD_NEWS_SUCCESS';
 const LOAD_NEWS_FAILURE = 'news/LOAD_NEWS_FAILURE';
 
 export const loadNews = createAction(LOAD_NEWS, weather => weather);
+
 function* loadNewsSaga(action) {
     yield put(startLoading(LOAD_NEWS));
     try {
@@ -25,18 +26,21 @@ function* loadNewsSaga(action) {
     }
     yield put(finishLoading(LOAD_NEWS));
 }
-export function* newsSaga(){
+
+export function* newsSaga() {
     yield takeLatest(LOAD_NEWS, loadNewsSaga);
 }
 
 const initialState = {
-    newsData: {
-        title: '',
-        originalLink: '',
-        link: '',
-        description: '',
-        pubDate: ''
-    },
+    newsData: [
+        {
+            title: '',
+            originalLink: '',
+            link: '',
+            description: '',
+            pubDate: ''
+        }
+    ],
     error: null
 };
 

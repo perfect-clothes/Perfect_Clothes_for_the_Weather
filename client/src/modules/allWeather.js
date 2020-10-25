@@ -8,6 +8,7 @@ const LOAD_ALL_WEATHER_SUCCESS = 'allWeather/LOAD_ALL_WEATHER_SUCCESS';
 const LOAD_ALL_WEATHER_FAILURE = 'allWeather/LOAD_ALL_WEATHER_FAILURE';
 
 export const loadAllWeather = createAction(LOAD_ALL_WEATHER, ({latitude, longitude}) => ({latitude, longitude}));
+
 function* loadAllWeatherSaga(action) {
     yield put(startLoading(LOAD_ALL_WEATHER));
     try {
@@ -25,19 +26,22 @@ function* loadAllWeatherSaga(action) {
     }
     yield put(finishLoading(LOAD_ALL_WEATHER));
 }
+
 export function* allWeatherSaga() {
     yield takeLatest(LOAD_ALL_WEATHER, loadAllWeatherSaga);
 }
 
 const initialState = {
-    allWeatherData: {
-        date: '',
-        time: '',
-        weather: '',
-        description: '',
-        temp: 0,
-        humid: 0
-    },
+    allWeatherData: [
+        {
+            date: '',
+            time: '',
+            weather: '',
+            description: '',
+            temp: 0,
+            humid: 0
+        }
+    ],
     error: null
 };
 
