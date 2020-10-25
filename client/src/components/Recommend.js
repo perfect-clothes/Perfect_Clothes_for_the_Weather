@@ -1,29 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-
-const ContainerBlock = styled.div `
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-    align-items: center;
-    justify-content: center;
-`;
-
-const TitleBlock = styled.div `
-    background: white;
-    border-radius: 4px;
-    border: none;
-    width: 500px;
-    height: 50px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.125rem;
-    color: #373a40;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-`;
+import ContainerBlock from "./common/ContainerBlock";
+import TitleBlock from "./common/TitleBlock";
 
 const RecommendBlock = styled.div `
     background: white;

@@ -2,30 +2,9 @@ import React from "react";
 import styled from 'styled-components';
 import WeatherIconSwitch from "../lib/WeatherIconSwitch";
 import {getDate} from "../lib/GetDateTime";
+import ContainerBlock from "./common/ContainerBlock";
+import TitleBlock from "./common/TitleBlock";
 
-const ContainerBlock = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-    align-items: center;
-    justify-content: center;
-`;
-//날짜
-const DateBlock = styled.div`
-    background: white;
-    border-radius: 4px;
-    border: none;
-    width: 500px;
-    height: 50px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.125rem;
-    color: #373a40;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
-`;
 //날씨
 const WeatherBlock = styled.div`
     border: 1px solid black;
@@ -84,9 +63,9 @@ const Weather = (/*{weatherData, error}*/) => {
     return (
         //나중에 데이터 받아오도록 수정
         <ContainerBlock>
-            <DateBlock>
+            <TitleBlock>
                 <h2>{year}년 {month}월 {date}일 {day} </h2>
-            </DateBlock>
+            </TitleBlock>
             <WeatherBlock>
                 <Icon>
                     {WeatherIconSwitch('Clouds')}

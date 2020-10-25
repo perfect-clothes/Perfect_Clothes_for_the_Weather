@@ -1,30 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
 import WeatherIconSwitch from "../lib/WeatherIconSwitch";
-
-const ContainerBlock = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-`;
-
-const TitleBlock = styled.div`
-    background: white;
-    border-radius: 4px;
-    border: none;
-    width: 500px;
-    height: 50px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.125rem;
-    color: #373a40;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-`;
+import ContainerBlock from "./common/ContainerBlock";
+import TitleBlock from "./common/TitleBlock";
 
 const AllWeatherBlock = styled.div`
     background: white;
@@ -52,7 +30,6 @@ const WeatherInfoBlock = styled.div`
 `;
 
 const TimeBlock = styled.div`
-    //border: 1px solid black;
     display: flex;
     height: 30px;
     font-size: 1.5rem;
@@ -61,14 +38,12 @@ const TimeBlock = styled.div`
 `;
 
 const IconBlock = styled.div`
-    //border: 1px solid black;
     display: flex;
     height: 100px;
     font-size: 80px;
 `;
 
 const TempBlock = styled.div`
-    //border: 1px solid black;
     display: flex;
     height: 25px;
     font-size: 1.5rem;
@@ -76,7 +51,6 @@ const TempBlock = styled.div`
 `;
 
 const HumidBlock = styled.div`
-    //border: 1px solid black;
     display: flex;
     height: 25px;
     width: 80px;
