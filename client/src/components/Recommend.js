@@ -38,7 +38,18 @@ const clothesData = {
 };
 */
 const Recommend = ({clothesData, error, loading}) => {
-    //에러 넘어올 경우 구현해야함
+    if (error) {
+        return (
+            <ContainerBlock>
+                <TitleBlock>
+                    <h2>Recommendation</h2>
+                </TitleBlock>
+                <RecommendBlock>
+                    에러 발생!
+                </RecommendBlock>
+            </ContainerBlock>
+        );
+    }
 
     const clothesArray = [];
 
@@ -59,7 +70,7 @@ const Recommend = ({clothesData, error, loading}) => {
                 </RecommendBlock>
             )}
             {clothesData && clothesArray.map(clothes => (
-                    <RecommendBlock>{clothes}</RecommendBlock>
+                <RecommendBlock>{clothes}</RecommendBlock>
             ))}
         </ContainerBlock>
     );

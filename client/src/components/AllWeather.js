@@ -17,6 +17,12 @@ const AllWeatherBlock = styled.div`
     margin-bottom: 60px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     overflow: auto;
+    p {
+        padding-left: 300px;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #373a40;
+    }    
 `;
 
 const WeatherInfoBlock = styled.div`
@@ -113,19 +119,29 @@ const allWeatherData = [
 */
 const AllWeather = ({allWeatherData, error, loading}) => {
     //에러 구현해야함
+    if (error) {
+        return (
+            <ContainerBlock>
+                <TitleBlock>
+                    <h2>Today's weather</h2>
+                </TitleBlock>
+                <AllWeatherBlock>
+                    <p>날씨를 불러올 수 없습니다.</p>
+                </AllWeatherBlock>
+            </ContainerBlock>
+        );
+    }
 
     return (
         <ContainerBlock>
             <TitleBlock>
                 <h2>Today's weather</h2>
             </TitleBlock>
-            {loading && (
-                <AllWeatherBlock>
+            <AllWeatherBlock>
+                {loading && (
                     <Spinner/>
-                </AllWeatherBlock>
-            )}
-            {allWeatherData && allWeatherData.map(data => (
-                <AllWeatherBlock>
+                )}
+                {allWeatherData && allWeatherData.map(data => (
                     <WeatherInfoBlock>
                         <TimeBlock>{data.time.slice(0, 5)}</TimeBlock>
                         <IconBlock>
@@ -136,8 +152,8 @@ const AllWeather = ({allWeatherData, error, loading}) => {
                             <i className='wi wi-raindrop'> {data.humid}%</i>
                         </HumidBlock>
                     </WeatherInfoBlock>
-                </AllWeatherBlock>
-            ))}
+                ))}
+            </AllWeatherBlock>
         </ContainerBlock>
     );
 };

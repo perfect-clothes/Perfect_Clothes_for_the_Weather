@@ -22,6 +22,13 @@ const WeatherBlock = styled.div`
         "Icon City City" 100px
         "Icon Temp Humid" 100px
         /2fr 1fr 1.5fr;
+    p {
+        margin-top: 80px;
+        margin-left: 10px;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #373a40;
+    }        
 `;
 //날씨 아이콘
 const Icon = styled.div`
@@ -63,25 +70,20 @@ const weatherData = {
 };
 */
 const Weather = ({weatherData, error, loading}) => {
-    /*if(error) {
-        //모달 추가 해야함
-        return <div>에러 발생!</div>
-    }*/
     const {year, month, date, day} = getDate();
 
-    if (loading) {
+    if (error) {
         return (
             <ContainerBlock>
                 <TitleBlock>
                     <h2>{year}년 {month}월 {date}일 {day} </h2>
                 </TitleBlock>
                 <WeatherBlock>
-
+                    <p>날씨를 불러올 수 없습니다.</p>
                 </WeatherBlock>
             </ContainerBlock>
         );
     }
-
 
     return (
         //나중에 데이터 받아오도록 수정
