@@ -1,6 +1,7 @@
 import {createAction, handleActions} from 'redux-actions';
 import {takeLatest, put, call} from 'redux-saga/effects';
 import * as loadNewsAPI from '../lib/api/loadNews';
+import {startLoading, finishLoading} from "./loading";
 
 const LOAD_NEWS = 'news/LOAD_NEWS';
 const LOAD_NEWS_SUCCESS = 'news/LOAD_NEWS_SUCCESS';
@@ -8,6 +9,7 @@ const LOAD_NEWS_FAILURE = 'news/LOAD_NEWS_FAILURE';
 
 export const loadNews = createAction(LOAD_NEWS, weather => weather);
 function* loadNewsSaga(action) {
+    yield put(startLoading(LOAD_NEWS));
     try {
         const response = yield call(loadNewsAPI.loadNews, action.payload);
         yield put({
@@ -21,10 +23,11 @@ function* loadNewsSaga(action) {
             payload: e
         });
     }
+    yield put(finishLoading(LOAD_NEWS));
 }
 export function* newsSaga(){
     yield takeLatest(LOAD_NEWS, loadNewsSaga);
-};
+}
 
 const initialState = {
     newsData: {
