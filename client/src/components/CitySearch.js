@@ -6,8 +6,12 @@ import Modal from "./common/Modal";
 
 const CitySearchBlock = styled.div`
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
     align-items: center;
     justify-content: center;
+    margin-bottom: 60px;
 `;
 
 const StyledInput = styled.input`

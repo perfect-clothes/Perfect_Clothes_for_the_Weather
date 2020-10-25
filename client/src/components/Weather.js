@@ -7,7 +7,7 @@ const ContainerBlock = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 400px;
+    height: auto;
     align-items: center;
     justify-content: center;
 `;
@@ -36,6 +36,7 @@ const WeatherBlock = styled.div`
     height: 200px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     color: #373a40;
+    margin-bottom: 60px;
     display: grid;
     grid-template: 
         "Icon City City" 100px
