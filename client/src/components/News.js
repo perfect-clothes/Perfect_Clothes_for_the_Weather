@@ -32,7 +32,13 @@ const NewsBlock = styled.div`
         font-size: 1.25rem;
         font-weight: 700;
         color: #373a40;
-    }    
+    }
+    @media screen and (max-width: 801px) {
+        width: 500px;
+        p {
+            margin-left: 150px;
+        }    
+    }        
 `;
 
 const Title = styled.div`
