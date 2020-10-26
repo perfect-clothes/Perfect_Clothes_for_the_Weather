@@ -4,12 +4,14 @@ import weather, {weatherSaga} from "./weather";
 import allWeather, {allWeatherSaga} from "./allWeather";
 import news, {newsSaga} from "./news";
 import loading from "./loading";
+import coords from "./coords";
 
 const rootReducer = combineReducers({
     weather,
     allWeather,
     news,
-    loading
+    loading,
+    coords
 });
 
 export function* rootSaga() {
