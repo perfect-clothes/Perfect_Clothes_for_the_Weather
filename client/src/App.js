@@ -15,6 +15,7 @@ const ContainerBlock = styled.div`
         background-image: url(${night});
     `}
     background-size: cover;
+    min-width: 540px;
 `;
 
 const App = () => {

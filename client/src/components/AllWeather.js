@@ -1,30 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
 import WeatherIconSwitch from "../lib/WeatherIconSwitch";
-
-const ContainerBlock = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-`;
-
-const TitleBlock = styled.div`
-    background: white;
-    border-radius: 4px;
-    border: none;
-    width: 500px;
-    height: 50px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.125rem;
-    color: #373a40;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-`;
+import ContainerBlock from "./common/ContainerBlock";
+import TitleBlock from "./common/TitleBlock";
+import Spinner from "./common/Spinner";
 
 const AllWeatherBlock = styled.div`
     background: white;
@@ -38,6 +17,18 @@ const AllWeatherBlock = styled.div`
     margin-bottom: 60px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     overflow: auto;
+    p {
+        padding-left: 300px;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #373a40;
+    }
+    @media screen and (max-width: 801px) {
+        width: 500px;
+        p {
+            padding-left: 150px;
+        }    
+    }       
 `;
 
 const WeatherInfoBlock = styled.div`
@@ -52,7 +43,6 @@ const WeatherInfoBlock = styled.div`
 `;
 
 const TimeBlock = styled.div`
-    //border: 1px solid black;
     display: flex;
     height: 30px;
     font-size: 1.5rem;
@@ -61,14 +51,12 @@ const TimeBlock = styled.div`
 `;
 
 const IconBlock = styled.div`
-    //border: 1px solid black;
     display: flex;
     height: 100px;
     font-size: 80px;
 `;
 
 const TempBlock = styled.div`
-    //border: 1px solid black;
     display: flex;
     height: 25px;
     font-size: 1.5rem;
@@ -76,7 +64,6 @@ const TempBlock = styled.div`
 `;
 
 const HumidBlock = styled.div`
-    //border: 1px solid black;
     display: flex;
     height: 25px;
     width: 80px;
@@ -84,6 +71,7 @@ const HumidBlock = styled.div`
 `;
 
 //임시 데이터
+/*
 const allWeatherData = [
     {
         time: "15:00:00",
@@ -134,9 +122,21 @@ const allWeatherData = [
         humid: 40
     }
 ]
-
-const AllWeather = (/*{allWeatherData, error}*/) => {
+*/
+const AllWeather = ({allWeatherData, error, loading}) => {
     //에러 구현해야함
+    if (error) {
+        return (
+            <ContainerBlock>
+                <TitleBlock>
+                    <h2>Today's weather</h2>
+                </TitleBlock>
+                <AllWeatherBlock>
+                    <p>날씨를 불러올 수 없습니다.</p>
+                </AllWeatherBlock>
+            </ContainerBlock>
+        );
+    }
 
     return (
         <ContainerBlock>
@@ -144,7 +144,10 @@ const AllWeather = (/*{allWeatherData, error}*/) => {
                 <h2>Today's weather</h2>
             </TitleBlock>
             <AllWeatherBlock>
-                {allWeatherData.map(data => (
+                {loading && (
+                    <Spinner/>
+                )}
+                {allWeatherData && allWeatherData.map(data => (
                     <WeatherInfoBlock>
                         <TimeBlock>{data.time.slice(0, 5)}</TimeBlock>
                         <IconBlock>

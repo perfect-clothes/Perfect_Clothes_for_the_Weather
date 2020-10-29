@@ -34,7 +34,7 @@ const WeatherIconSwitch = (weather) => {
         case 'Clouds':
             return <i className="wi wi-owm-804"></i>
         default:
-            return <div>error</div>
+            return <div>...</div>
     }
 };
 

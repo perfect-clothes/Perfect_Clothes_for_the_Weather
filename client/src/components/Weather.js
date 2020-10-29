@@ -2,30 +2,10 @@ import React from "react";
 import styled from 'styled-components';
 import WeatherIconSwitch from "../lib/WeatherIconSwitch";
 import {getDate} from "../lib/GetDateTime";
+import ContainerBlock from "./common/ContainerBlock";
+import TitleBlock from "./common/TitleBlock";
+import Spinner from "./common/Spinner";
 
-const ContainerBlock = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 400px;
-    align-items: center;
-    justify-content: center;
-`;
-//날짜
-const DateBlock = styled.div`
-    background: white;
-    border-radius: 4px;
-    border: none;
-    width: 500px;
-    height: 50px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.125rem;
-    color: #373a40;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
-`;
 //날씨
 const WeatherBlock = styled.div`
     border: 1px solid black;
@@ -36,11 +16,19 @@ const WeatherBlock = styled.div`
     height: 200px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     color: #373a40;
+    margin-bottom: 60px;
     display: grid;
     grid-template: 
         "Icon City City" 100px
         "Icon Temp Humid" 100px
         /2fr 1fr 1.5fr;
+    p {
+        margin-top: 80px;
+        margin-left: 10px;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #373a40;
+    }        
 `;
 //날씨 아이콘
 const Icon = styled.div`
@@ -71,31 +59,55 @@ const Humid = styled.div`
     font-size: 30px;
     padding-top: 20px;
 `;
-
-
-const Weather = (/*{weatherData, error}*/) => {
-    /*if(error) {
-        //모달 추가 해야함
-        return <div>에러 발생!</div>
-    }*/
+//임시 데이터
+/*
+const weatherData = {
+    weather: 'Clouds',
+    city: 'Seoul',
+    country: 'kr',
+    temp: 16,
+    humid: 50
+};
+*/
+const Weather = ({weatherData, error, loading}) => {
     const {year, month, date, day} = getDate();
+
+    if (error) {
+        return (
+            <ContainerBlock>
+                <TitleBlock>
+                    <h2>{year}년 {month}월 {date}일 {day} </h2>
+                </TitleBlock>
+                <WeatherBlock>
+                    <p>날씨를 불러올 수 없습니다.</p>
+                </WeatherBlock>
+            </ContainerBlock>
+        );
+    }
 
     return (
         //나중에 데이터 받아오도록 수정
         <ContainerBlock>
-            <DateBlock>
+            <TitleBlock>
                 <h2>{year}년 {month}월 {date}일 {day} </h2>
-            </DateBlock>
-            <WeatherBlock>
-                <Icon>
-                    {WeatherIconSwitch('Clouds')}
-                </Icon>
-                <City>Seoul, kr</City>
-                <Temp>16°</Temp>
-                <Humid>
-                    <i className='wi wi-raindrop'> 50%</i>
-                </Humid>
-            </WeatherBlock>
+            </TitleBlock>
+            {loading && (
+                <WeatherBlock>
+                    <Spinner/>
+                </WeatherBlock>
+            )}
+            {weatherData && (
+                <WeatherBlock>
+                    <Icon>
+                        {WeatherIconSwitch(weatherData.weather)}
+                    </Icon>
+                    <City>{weatherData.city}</City>
+                    <Temp>{weatherData.temp}°</Temp>
+                    <Humid>
+                        <i className='wi wi-raindrop'> {weatherData.humid}%</i>
+                    </Humid>
+                </WeatherBlock>
+            )}
         </ContainerBlock>
     );
 };

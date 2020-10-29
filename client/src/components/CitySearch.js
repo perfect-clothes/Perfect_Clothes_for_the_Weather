@@ -3,11 +3,10 @@ import {useDispatch} from "react-redux";
 import styled from 'styled-components';
 import CityList from "../Assets/CityList";
 import Modal from "./common/Modal";
+import ContainerBlock from "./common/ContainerBlock";
 
-const CitySearchBlock = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+const CitySearchBlock = styled(ContainerBlock)`
+    margin-bottom: 60px;
 `;
 
 const StyledInput = styled.input`
