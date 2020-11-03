@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from 'styled-components';
 import ContainerBlock from "./common/ContainerBlock";
 import TitleBlock from "./common/TitleBlock";
 import Spinner from "./common/Spinner";
+import RecommendModal from "./RecommendModal";
 
 const RecommendBlock = styled.div`
     background: white;
@@ -24,11 +25,11 @@ const RecommendBlock = styled.div`
     &:last-child {
         margin-bottom: 60px;
         border-radius: 0 0 4px 4px;
-    }        
+    }
+    cursor: pointer;        
 `;
 
 //임시 데이터
-/*
 const clothesData = {
     top: '',
     bottom: '청바지',
@@ -36,8 +37,11 @@ const clothesData = {
     inner: '히트텍',
     item: '목도리'
 };
-*/
-const Recommend = ({clothesData, error, loading}) => {
+
+const Recommend = ({/*clothesData, error,*/ loading}) => {
+    const [visible, setVisible] = useState(false);
+    const [value, setValue] = useState('');
+    /*
     if (error) {
         return (
             <ContainerBlock>
@@ -50,29 +54,42 @@ const Recommend = ({clothesData, error, loading}) => {
             </ContainerBlock>
         );
     }
-
+    */
     const clothesArray = [];
 
     //값이 빈 칸이 아닌 항목으로만 배열을 새로 만듦
     for (let key in clothesData) {
         if (clothesData[key] !== '') clothesArray.push(clothesData[key]);
     }
-    ;
+
+    const onClick = e => {
+        setValue(e.target.innerText);
+        setVisible(true);
+    };
+
+    const onConfirm = () => {
+        setVisible(false);
+    };
 
     return (
-        <ContainerBlock>
-            <TitleBlock>
-                <h2>Recommendation</h2>
-            </TitleBlock>
-            {loading && (
-                <RecommendBlock>
-                    <Spinner/>
-                </RecommendBlock>
-            )}
-            {clothesData && clothesArray.map(clothes => (
-                <RecommendBlock>{clothes}</RecommendBlock>
-            ))}
-        </ContainerBlock>
+        <>
+            <ContainerBlock>
+                <TitleBlock>
+                    <h2> Recommendation </h2>
+                </TitleBlock>
+                {loading && (
+                    <RecommendBlock>
+                        <Spinner/>
+                    </RecommendBlock>
+                )}
+                {clothesData && clothesArray.map((clothes, index) => (
+                    <RecommendBlock key={index} onClick={onClick}>{clothes}</RecommendBlock>
+                ))}
+            </ContainerBlock>
+            {visible ? (
+                <RecommendModal value={value} onConfirm={onConfirm}/>
+            ) : null}
+        </>
     );
 };
 

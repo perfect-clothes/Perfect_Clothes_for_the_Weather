@@ -11,6 +11,9 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import createSagaMiddleware from 'redux-saga';
 import './Assets/weather-icons-master/css/weather-icons.min.css';
 import './normalize.css';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
