@@ -71,7 +71,6 @@ const HumidBlock = styled.div`
 `;
 
 //임시 데이터
-/*
 const allWeatherData = [
     {
         time: "15:00:00",
@@ -122,9 +121,9 @@ const allWeatherData = [
         humid: 40
     }
 ]
-*/
-const AllWeather = ({allWeatherData, error, loading}) => {
-    //에러 구현해야함
+
+const AllWeather = ({/*allWeatherData, error,*/ loading}) => {
+    /*
     if (error) {
         return (
             <ContainerBlock>
@@ -137,7 +136,7 @@ const AllWeather = ({allWeatherData, error, loading}) => {
             </ContainerBlock>
         );
     }
-
+    */
     return (
         <ContainerBlock>
             <TitleBlock>
@@ -147,8 +146,8 @@ const AllWeather = ({allWeatherData, error, loading}) => {
                 {loading && (
                     <Spinner/>
                 )}
-                {allWeatherData && allWeatherData.map(data => (
-                    <WeatherInfoBlock>
+                {allWeatherData && allWeatherData.map((data, index) => (
+                    <WeatherInfoBlock key={index}>
                         <TimeBlock>{data.time.slice(0, 5)}</TimeBlock>
                         <IconBlock>
                             {WeatherIconSwitch(data.weather)}
