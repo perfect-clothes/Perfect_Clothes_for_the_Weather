@@ -7,10 +7,6 @@ import AllWeatherContainer from "../containers/AllWeatherContainer";
 import NewsContainer from "../containers/NewsContainer";
 import {useDispatch} from "react-redux";
 import {saveCoords} from "../modules/coords";
-import Weather from "../components/Weather";
-import Recommend from "../components/Recommend";
-import AllWeather from "../components/AllWeather";
-import News from "../components/News";
 
 const Main = () => {
     //테스트 후 원래대로 변경
@@ -37,10 +33,10 @@ const Main = () => {
         <>
             <Header/>
             <CitySearch/>
-            <Weather/>
-            <Recommend/>
-            <AllWeather/>
-            <News/>
+            <WeatherContainer/>
+            <RecommendContainer/>
+            <AllWeatherContainer/>
+            <NewsContainer/>
         </>
     );
 }

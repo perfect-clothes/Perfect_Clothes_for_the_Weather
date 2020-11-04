@@ -30,6 +30,7 @@ const RecommendBlock = styled.div`
 `;
 
 //임시 데이터
+/*
 const clothesData = {
     top: '',
     bottom: '청바지',
@@ -37,11 +38,11 @@ const clothesData = {
     inner: '히트텍',
     item: '목도리'
 };
-
-const Recommend = ({/*clothesData, error,*/ loading}) => {
+*/
+const Recommend = ({clothesData, error, loading}) => {
     const [visible, setVisible] = useState(false);
     const [value, setValue] = useState('');
-    /*
+
     if (error) {
         return (
             <ContainerBlock>
@@ -54,7 +55,7 @@ const Recommend = ({/*clothesData, error,*/ loading}) => {
             </ContainerBlock>
         );
     }
-    */
+
     const clothesArray = [];
 
     //값이 빈 칸이 아닌 항목으로만 배열을 새로 만듦

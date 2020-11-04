@@ -54,6 +54,7 @@ const Description = styled.div`
 `;
 
 //임시 데이터
+/*
 const newsData = [
     {
         title: "[<b>날씨</b>] 비구름 뒤로 황사 유입 중...오후 찬바람",
@@ -68,10 +69,10 @@ const newsData = [
         description: "&lt; <b>날씨</b> 전망 &gt; (하늘상태) 오늘(22일)은 전국이 구름많다가 중부지방은 오전에, 남부지방은 저녁에 맑아지겠다. 내일(23일)과 모레(24일) 전국이 대체로 맑겠으나, 강원영동은 내일 오전에, 전라서해안과 제주도는..."
     }
 ];
-
-const News = ({/*newsData, error,*/ loading}) => {
+*/
+const News = ({newsData, error, loading}) => {
     //에러 처리
-    /*
+
     if (error) {
         return (
             <ContainerBlock>
@@ -84,7 +85,7 @@ const News = ({/*newsData, error,*/ loading}) => {
             </ContainerBlock>
         );
     }
-    */
+
     return (
         <ContainerBlock>
             <TitleBlock>

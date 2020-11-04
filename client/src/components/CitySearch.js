@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import CityList from "../Assets/CityList";
 import Modal from "./common/Modal";
 import ContainerBlock from "./common/ContainerBlock";
+import {saveCoords} from "../modules/coords";
 
 const CitySearchBlock = styled(ContainerBlock)`
     margin-bottom: 60px;
@@ -60,7 +61,7 @@ const CitySearch = () => {
         }
         console.log(cityInfo.latitude, cityInfo.longitude)
         //추후에 서버에 데이터 요청하도록 수정
-        //dispatch(citySearch(cityInfo.latitude, cityInfo.longitude));
+        dispatch(saveCoords(cityInfo.latitude, cityInfo.longitude));
         setCity('');
     };
 

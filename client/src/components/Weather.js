@@ -60,6 +60,7 @@ const Humid = styled.div`
     padding-top: 20px;
 `;
 //임시 데이터
+/*
 const weatherData = {
     weather: 'Clouds',
     city: 'Seoul',
@@ -67,10 +68,10 @@ const weatherData = {
     temp: 16,
     humid: 50
 };
-
-const Weather = ({/*weatherData, error,*/ loading}) => {
+*/
+const Weather = ({weatherData, error, loading}) => {
     const {year, month, date, day} = getDate();
-    /*
+
     if (error) {
         return (
             <ContainerBlock>
@@ -83,9 +84,8 @@ const Weather = ({/*weatherData, error,*/ loading}) => {
             </ContainerBlock>
         );
     }
-    */
+
     return (
-        //나중에 데이터 받아오도록 수정
         <ContainerBlock>
             <TitleBlock>
                 <h2>{year}년 {month}월 {date}일 {day} </h2>
