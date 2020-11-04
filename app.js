@@ -3,6 +3,11 @@ const express = require('express');
 const http = require('http');
 const cors = require('cors');
 
+let corsOptions = {
+    origin: process.env.ORIGIN,
+    credentials: true
+};
+
 require('dotenv').config();
 
 // 모듈 호출 (./api)
@@ -25,7 +30,7 @@ app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
 // 오류 처리
-app.use(cors());
+app.use(cors(corsOptions));
 
 // 라우트 수행
 app.use('/api/curWeather', curWeather);
