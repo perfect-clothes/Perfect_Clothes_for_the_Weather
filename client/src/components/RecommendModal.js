@@ -14,12 +14,13 @@ const Background = styled.div`
     display: flex;
     align-items: center;
     justify-content: center; 
+    min-width: 540px;
 `;
 
 const Box = styled.div`
     width: 800px;
     height: 800px;
-    padding: 2rem;
+    padding: 1rem;
     background: white;
     border-radius: 4px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
@@ -30,13 +31,33 @@ const Box = styled.div`
         "image image image" 250px
         /1fr 1fr 1fr; 
     img {
+        padding: 0.5rem;
         width: 250px;
         height: 250px;
     }
+    
+    @media screen and (max-width: 801px) {
+        width: 600px;
+        height: 600px;
+        display: grid;
+        grid-template:
+            "image image image" 180px
+            "image image image" 180px
+            "image image image" 180px
+            /1fr 1fr 1fr;
+        img {
+            padding: 0.5rem;
+            width: 180px;
+            height: 180px;
+        }    
+    }    
 `;
 
 const SpinnerBlock = styled.div `
     padding: 380px 380px;
+    @media screen and (max-width: 801px) {
+        padding: 280px 280px;
+    }    
 `;
 
 const RecommendModal = ({onConfirm, value}) => {
