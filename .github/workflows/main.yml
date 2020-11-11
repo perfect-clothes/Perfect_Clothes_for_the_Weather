@@ -43,7 +43,7 @@ jobs:
       # Build an optimized production build
       - name: Production build      
         run: |        
-          unset CI
+          cd client/
           yarn build
           
       # Deploy to the S3 server
