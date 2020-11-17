@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 //loading animation
 const Spinner = styled.div `
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     margin: 0 auto 1rem;
     border: 3px solid #000000; 
     border-radius: 50%; 

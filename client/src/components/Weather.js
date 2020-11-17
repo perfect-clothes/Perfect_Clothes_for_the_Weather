@@ -59,6 +59,10 @@ const Humid = styled.div`
     font-size: 30px;
     padding-top: 20px;
 `;
+
+const SpinnerBlock = styled.div `
+    padding: 80px 230px;
+`;
 //임시 데이터
 /*
 const weatherData = {
@@ -90,12 +94,13 @@ const Weather = ({weatherData, error, loading}) => {
             <TitleBlock>
                 <h2>{year}년 {month}월 {date}일 {day} </h2>
             </TitleBlock>
-            {loading && (
+            {loading ? (
                 <WeatherBlock>
-                    <Spinner/>
+                    <SpinnerBlock>
+                        <Spinner/>
+                    </SpinnerBlock>
                 </WeatherBlock>
-            )}
-            {weatherData && (
+            ) : (
                 <WeatherBlock>
                     <Icon>
                         {WeatherIconSwitch(weatherData.weather)}

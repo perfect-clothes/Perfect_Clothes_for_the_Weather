@@ -143,23 +143,26 @@ const AllWeather = ({allWeatherData, error, loading}) => {
             <TitleBlock>
                 <h2>Today's weather</h2>
             </TitleBlock>
-            <AllWeatherBlock>
-                {loading && (
+            {loading ? (
+                <AllWeatherBlock>
                     <Spinner/>
-                )}
-                {allWeatherData && allWeatherData.map((data, index) => (
-                    <WeatherInfoBlock key={index}>
-                        <TimeBlock>{data.time.slice(0, 5)}</TimeBlock>
-                        <IconBlock>
-                            {WeatherIconSwitch(data.weather)}
-                        </IconBlock>
-                        <TempBlock>{data.temp}°</TempBlock>
-                        <HumidBlock>
-                            <i className='wi wi-raindrop'> {data.humid}%</i>
-                        </HumidBlock>
-                    </WeatherInfoBlock>
-                ))}
-            </AllWeatherBlock>
+                </AllWeatherBlock>
+            ) : (
+                <AllWeatherBlock>
+                    {allWeatherData.map((data, index) => (
+                        <WeatherInfoBlock key={index}>
+                            <TimeBlock>{data.time.slice(0, 5)}</TimeBlock>
+                            <IconBlock>
+                                {WeatherIconSwitch(data.weather)}
+                            </IconBlock>
+                            <TempBlock>{data.temp}°</TempBlock>
+                            <HumidBlock>
+                                <i className='wi wi-raindrop'> {data.humid}%</i>
+                            </HumidBlock>
+                        </WeatherInfoBlock>
+                    ))}
+                </AllWeatherBlock>
+            )}
         </ContainerBlock>
     );
 };

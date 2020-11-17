@@ -29,6 +29,10 @@ const RecommendBlock = styled.div`
     cursor: pointer;        
 `;
 
+const SpinnerBlock = styled.div `
+    padding-top: 5px;
+`;
+
 //임시 데이터
 /*
 const clothesData = {
@@ -80,7 +84,9 @@ const Recommend = ({clothesData, error, loading}) => {
                 </TitleBlock>
                 {loading && (
                     <RecommendBlock>
-                        <Spinner/>
+                        <SpinnerBlock>
+                            <Spinner/>
+                        </SpinnerBlock>
                     </RecommendBlock>
                 )}
                 {clothesData && clothesArray.map((clothes, index) => (
