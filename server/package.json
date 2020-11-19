@@ -1,0 +1,19 @@
+{
+  "name": "Perfect_Clothes_for_the_Weather",
+  "version": "1.0.0",
+  "description": "recommending the suitable clothes for the weather today.",
+  "main": "app.js",
+  "repository": "https://github.com/Joie-Kim/Perfect_Clothes_for_the_Weather",
+  "author": "JoieHuiju <joie.huiju@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "mysql": "^2.18.1",
+    "request": "^2.88.2",
+    "serve-static": "^1.14.1"
+  }
+}
