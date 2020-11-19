@@ -1,7 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
 import WeatherIconSwitch from "../lib/WeatherIconSwitch";
-import {getDate} from "../lib/GetDateTime";
 import ContainerBlock from "./common/ContainerBlock";
 import TitleBlock from "./common/TitleBlock";
 import Spinner from "./common/Spinner";
@@ -22,13 +21,6 @@ const WeatherBlock = styled.div`
         "Icon City City" 100px
         "Icon Temp Humid" 100px
         /2fr 1fr 1.5fr;
-    p {
-        margin-top: 80px;
-        margin-left: 10px;
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: #373a40;
-    }        
 `;
 //날씨 아이콘
 const Icon = styled.div`
@@ -59,6 +51,10 @@ const Humid = styled.div`
     font-size: 30px;
     padding-top: 20px;
 `;
+
+const SpinnerBlock = styled.div `
+    padding: 80px 230px;
+`;
 //임시 데이터
 /*
 const weatherData = {
@@ -69,8 +65,8 @@ const weatherData = {
     humid: 50
 };
 */
-const Weather = ({weatherData, error, loading}) => {
-    const {year, month, date, day} = getDate();
+const Weather = ({weatherData, error, loading, dateInfo}) => {
+    const {year, month, date, day} = dateInfo;
 
     if (error) {
         return (
@@ -78,9 +74,9 @@ const Weather = ({weatherData, error, loading}) => {
                 <TitleBlock>
                     <h2>{year}년 {month}월 {date}일 {day} </h2>
                 </TitleBlock>
-                <WeatherBlock>
-                    <p>날씨를 불러올 수 없습니다.</p>
-                </WeatherBlock>
+                <TitleBlock>
+                    <h3>날씨를 불러올 수 없습니다.</h3>
+                </TitleBlock>
             </ContainerBlock>
         );
     }
@@ -90,12 +86,13 @@ const Weather = ({weatherData, error, loading}) => {
             <TitleBlock>
                 <h2>{year}년 {month}월 {date}일 {day} </h2>
             </TitleBlock>
-            {loading && (
+            {loading ? (
                 <WeatherBlock>
-                    <Spinner/>
+                    <SpinnerBlock>
+                        <Spinner/>
+                    </SpinnerBlock>
                 </WeatherBlock>
-            )}
-            {weatherData && (
+            ) : (
                 <WeatherBlock>
                     <Icon>
                         {WeatherIconSwitch(weatherData.weather)}

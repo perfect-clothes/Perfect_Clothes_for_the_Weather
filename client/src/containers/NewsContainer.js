@@ -4,16 +4,15 @@ import {loadNews} from "../modules/news";
 import News from '../components/News';
 
 const NewsContainer = () => {
-    const {newsData, error, weatherData, loading} = useSelector(({news, weather, loading}) => ({
+    const {newsData, error, loading} = useSelector(({news, loading}) => ({
         newsData: news.newsData,
         error: news.error,
-        weatherData: weather.weatherData,
         loading: loading['news/LOAD_NEWS']
     }));
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(loadNews(weatherData.weather));
+        dispatch(loadNews());
     }, [dispatch]);
 
     return(

@@ -1,6 +1,6 @@
 import {createAction, handleActions} from 'redux-actions';
 import {takeLatest, put, call} from 'redux-saga/effects';
-import * as loadAPI from '../lib/api/loadWeather';
+import * as loadAPI from '../lib/api/loadAllWeather'
 import {startLoading, finishLoading} from "./loading";
 
 const LOAD_ALL_WEATHER = 'allWeather/LOAD_ALL_WEATHER';

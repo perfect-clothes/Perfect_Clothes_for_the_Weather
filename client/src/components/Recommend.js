@@ -29,6 +29,10 @@ const RecommendBlock = styled.div`
     cursor: pointer;        
 `;
 
+const SpinnerBlock = styled.div `
+    padding-top: 5px;
+`;
+
 //임시 데이터
 /*
 const clothesData = {
@@ -39,7 +43,7 @@ const clothesData = {
     item: '목도리'
 };
 */
-const Recommend = ({clothesData, error, loading}) => {
+const Recommend = ({clothesArray, error, loading}) => {
     const [visible, setVisible] = useState(false);
     const [value, setValue] = useState('');
 
@@ -54,13 +58,6 @@ const Recommend = ({clothesData, error, loading}) => {
                 </RecommendBlock>
             </ContainerBlock>
         );
-    }
-
-    const clothesArray = [];
-
-    //값이 빈 칸이 아닌 항목으로만 배열을 새로 만듦
-    for (let key in clothesData) {
-        if (clothesData[key] !== '') clothesArray.push(clothesData[key]);
     }
 
     const onClick = e => {
@@ -80,10 +77,12 @@ const Recommend = ({clothesData, error, loading}) => {
                 </TitleBlock>
                 {loading && (
                     <RecommendBlock>
-                        <Spinner/>
+                        <SpinnerBlock>
+                            <Spinner/>
+                        </SpinnerBlock>
                     </RecommendBlock>
                 )}
-                {clothesData && clothesArray.map((clothes, index) => (
+                {clothesArray && clothesArray.map((clothes, index) => (
                     <RecommendBlock key={index} onClick={onClick}>{clothes}</RecommendBlock>
                 ))}
             </ContainerBlock>

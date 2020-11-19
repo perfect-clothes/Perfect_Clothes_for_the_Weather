@@ -7,12 +7,12 @@ const LOAD_NEWS = 'news/LOAD_NEWS';
 const LOAD_NEWS_SUCCESS = 'news/LOAD_NEWS_SUCCESS';
 const LOAD_NEWS_FAILURE = 'news/LOAD_NEWS_FAILURE';
 
-export const loadNews = createAction(LOAD_NEWS, weather => weather);
+export const loadNews = createAction(LOAD_NEWS);
 
-function* loadNewsSaga(action) {
+function* loadNewsSaga() {
     yield put(startLoading(LOAD_NEWS));
     try {
-        const response = yield call(loadNewsAPI.loadNews, action.payload);
+        const response = yield call(loadNewsAPI.loadNews);
         yield put({
             type: LOAD_NEWS_SUCCESS,
             payload: response.data

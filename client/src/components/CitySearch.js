@@ -61,7 +61,7 @@ const CitySearch = () => {
         }
         console.log(cityInfo.latitude, cityInfo.longitude)
         //추후에 서버에 데이터 요청하도록 수정
-        dispatch(saveCoords(cityInfo.latitude, cityInfo.longitude));
+        dispatch(saveCoords({latitude: cityInfo.latitude, longitude: cityInfo.longitude}));
         setCity('');
     };
 

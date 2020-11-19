@@ -53,6 +53,10 @@ const Description = styled.div`
     font-weight: 500;
 `;
 
+const SpinnerBlock = styled.div `
+    padding: 30px 380px;
+`;
+
 //임시 데이터
 /*
 const newsData = [
@@ -93,7 +97,9 @@ const News = ({newsData, error, loading}) => {
             </TitleBlock>
             {loading && (
                 <NewsBlock>
-                    <Spinner/>
+                    <SpinnerBlock>
+                        <Spinner/>
+                    </SpinnerBlock>
                 </NewsBlock>
             )}
             {newsData && newsData.map((news,  index) => (

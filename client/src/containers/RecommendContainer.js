@@ -9,10 +9,17 @@ const RecommendContainer = () => {
         loading: loading['weather/LOAD_WEATHER']
     }));
 
+    const clothesArray = [];
+
+    //값이 빈 칸이 아닌 항목으로만 배열을 새로 만듦
+    for (let key in clothesData) {
+        if (clothesData[key] !== '') clothesArray.push(clothesData[key]);
+    }
+
     return(
         <div>
             <Recommend
-                clothesData={clothesData}
+                clothesArray={clothesArray}
                 error={error}
                 loading={loading}
             />
