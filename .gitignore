@@ -9,7 +9,3 @@ node_modules/
 
 # dotenv environment variables file
 .env
-
-# AWS
-PCW_keypem.pem
-
