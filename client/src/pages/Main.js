@@ -9,11 +9,7 @@ import {useDispatch} from "react-redux";
 import {saveCoords} from "../modules/coords";
 
 const Main = () => {
-    //테스트 후 원래대로 변경
     const dispatch = useDispatch();
-    //기본 위치 설정
-    const defaultLatitude = 37.58;
-    const defaultLongitude = 127;
 
     //위치 정보를 불러와 저장
     useEffect(() => {
@@ -23,8 +19,7 @@ const Main = () => {
             const longitude = pos.coords.longitude;
             dispatch(saveCoords({latitude, longitude}));
         }, function(e){
-            //사용자가 위치 권한을 거부했을 경우 기본값 사용
-            dispatch(saveCoords({defaultLatitude, defaultLongitude}));
+            //사용자가 위치 권한을 거부했을 경우
             console.log(e);
         });
     }, []);

@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Weather from "../components/Weather";
 import {loadWeather} from "../modules/weather";
-import {getDate} from "../lib/GetDateTime";
+import {getDate, getTime} from "../lib/GetDateTime";
 
 const WeatherContainer = () => {
     const dispatch = useDispatch();
@@ -14,10 +14,11 @@ const WeatherContainer = () => {
     }));
     const {latitude, longitude} = coordsInfo;
     const dateInfo = getDate();
+    const {hour} = getTime();
 
     useEffect(() => {
             dispatch(loadWeather({latitude, longitude}));
-    }, [dispatch]);
+    }, [coordsInfo]);
 
     return(
         <Weather
@@ -25,6 +26,7 @@ const WeatherContainer = () => {
             error={error}
             loading={loading}
             dateInfo={dateInfo}
+            hour={hour}
         />
     );
 };

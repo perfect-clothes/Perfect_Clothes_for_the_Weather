@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import ContainerBlock from "./common/ContainerBlock";
 import TitleBlock from "./common/TitleBlock";
 import Spinner from "./common/Spinner";
@@ -7,17 +7,23 @@ import RecommendModal from "./RecommendModal";
 
 const RecommendBlock = styled.div`
     background: white;
-    width: 500px;
+    width: 800px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
     font-weight: 700;
-    color: #373a40;
+    color: black;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     &:nth-child(odd) {
-        background: #ebebeb;
+        ${props => props.time > 6 && props.time < 19 ?      //7시부터 18시까지는 주간, 19시부터 6시까지 밤으로 설정
+        css`
+            background: #ebebeb;
+        ` :
+        css`
+            background: #797a7e;
+        `}
     }
     &:nth-child(2) {
         border-radius: 4px 4px 0 0;
@@ -26,34 +32,38 @@ const RecommendBlock = styled.div`
         margin-bottom: 60px;
         border-radius: 0 0 4px 4px;
     }
-    cursor: pointer;        
+    cursor: pointer;     
+    opacity: 0.75;
+    
+    @media screen and (max-width: 801px) {
+        width: 500px;    
+    }
+    
+    ${props => props.time > 6 && props.time < 19 ?      //7시부터 18시까지는 주간, 19시부터 6시까지 밤으로 설정
+    css`
+        background: white;
+    ` :
+    css`
+        background: #373a40;
+        color: white;
+    `}    
 `;
 
 const SpinnerBlock = styled.div `
     padding-top: 5px;
 `;
 
-//임시 데이터
-/*
-const clothesData = {
-    top: '',
-    bottom: '청바지',
-    outer: '자켓',
-    inner: '히트텍',
-    item: '목도리'
-};
-*/
-const Recommend = ({clothesArray, error, loading}) => {
+const Recommend = ({clothesArray, error, loading, hour}) => {
     const [visible, setVisible] = useState(false);
     const [value, setValue] = useState('');
 
     if (error) {
         return (
             <ContainerBlock>
-                <TitleBlock>
+                <TitleBlock time={hour}>
                     <h2>Recommendation</h2>
                 </TitleBlock>
-                <RecommendBlock>
+                <RecommendBlock time={hour}>
                     에러 발생!
                 </RecommendBlock>
             </ContainerBlock>
@@ -72,18 +82,18 @@ const Recommend = ({clothesArray, error, loading}) => {
     return (
         <>
             <ContainerBlock>
-                <TitleBlock>
+                <TitleBlock time={hour}>
                     <h2> Recommendation </h2>
                 </TitleBlock>
                 {loading && (
-                    <RecommendBlock>
+                    <RecommendBlock time={hour}>
                         <SpinnerBlock>
                             <Spinner/>
                         </SpinnerBlock>
                     </RecommendBlock>
                 )}
                 {clothesArray && clothesArray.map((clothes, index) => (
-                    <RecommendBlock key={index} onClick={onClick}>{clothes}</RecommendBlock>
+                    <RecommendBlock key={index} onClick={onClick} time={hour}>{clothes}</RecommendBlock>
                 ))}
             </ContainerBlock>
             {visible ? (

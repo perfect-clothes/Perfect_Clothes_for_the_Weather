@@ -6,8 +6,8 @@ export const saveCoords = createAction(SAVE_COORDS, ({latitude, longitude}) => (
 
 const initialState = {
     coordsInfo: {
-        latitude: 0,
-        longitude: 0
+        latitude: 37.58,
+        longitude: 127
     },
 };
 

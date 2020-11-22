@@ -12,6 +12,7 @@ import createSagaMiddleware from 'redux-saga';
 import './Assets/weather-icons-master/css/weather-icons.min.css';
 import './normalize.css';
 import dotenv from 'dotenv';
+import {HelmetProvider} from "react-helmet-async";
 
 dotenv.config();
 
@@ -23,7 +24,9 @@ ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
             <BrowserRouter>
-                <App/>
+                <HelmetProvider>
+                    <App/>
+                </HelmetProvider>
             </BrowserRouter>
         </Provider>
     </React.StrictMode>,
