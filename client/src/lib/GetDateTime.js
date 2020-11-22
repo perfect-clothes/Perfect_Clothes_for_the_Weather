@@ -1,6 +1,6 @@
 export const getTime = () => {
     const today = new Date();
-    const hour =today.getHours();
+    const hour = today.getHours();
     const minute = today.getMinutes();
     const seconds = today.getSeconds();
 

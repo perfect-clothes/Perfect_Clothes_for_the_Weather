@@ -13,15 +13,16 @@ const CitySearchBlock = styled(ContainerBlock)`
 const StyledInput = styled.input`
     border: none;
     outline: none;
-    width: 250px;
+    width: 350px;
     height: 40px;
     padding: 0px 10px;
     border-radius: 5px 0px 0px 5px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
+    opacity: 0.75;
 `;
 
 const StyledButton = styled.button`
-    background: #686d76;
+    background: #373a40;
     outline: none;
     border: none;
     border-radius: 0px 5px 5px 0px;
@@ -29,8 +30,9 @@ const StyledButton = styled.button`
     padding: 10px 20px;
     height: 40px;
     cursor: pointer;
+    opacity: 0.75;
     &:hover {
-        background: #373a40;
+        background: black;
     }
     transition: 0.1s background;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
@@ -59,8 +61,6 @@ const CitySearch = () => {
             setModal(true);
             return;
         }
-        console.log(cityInfo.latitude, cityInfo.longitude)
-        //추후에 서버에 데이터 요청하도록 수정
         dispatch(saveCoords({latitude: cityInfo.latitude, longitude: cityInfo.longitude}));
         setCity('');
     };

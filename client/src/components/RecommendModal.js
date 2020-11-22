@@ -72,7 +72,7 @@ const RecommendModal = ({onConfirm, value}) => {
             setLoading(true);
             try {
                 const response = await axios({
-                    url: `https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/search/image.json?query=${query}&display=9&start=${start}`,
+                    url: `https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/search/image.json?query=${query}&display=9&`,
                     method: 'get',
                     headers: {
                         'X-Naver-Client-Id': process.env.REACT_APP_CLIENT_ID,
