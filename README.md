@@ -5,7 +5,6 @@
 - Server-Client communication exercise (서버-클라이언트 통신 연습)
 - Collaborative development with Git (Git을 사용한 개발 협업)
 
----
 
 ## About
 
@@ -29,8 +28,6 @@
 
 ### Team Organization
 - [👉 Github Link](https://github.com/perfect-clothes)
-
----
 
 ## Skills
 ### Programming
