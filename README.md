@@ -1,7 +1,9 @@
 # Perfect Clothes for the Weather
 
-## 🖇 URL
-- [👉 Go to our Website](http://weatherwear.tk/)
+## 🖇 Link
+- [✨ Our Website URL ✨](http://weatherwear.tk/)
+- [Github Organization](https://github.com/perfect-clothes)
+- [Notion Workspace](https://www.notion.so/huijooooo/Perfect-Clothes-for-the-Weather-f0c2294664244404871603bf336f0322)
 <br>
 
 ## ⛳️ Purpose
@@ -24,13 +26,7 @@
 3. **Weather news (날씨 관련 기사 확인)**
 
 ### Prototype
-- [👉 Figma Link](https://www.figma.com/proto/naG6gaAEaDOcrGQS4Dfboq/Perfect_Clothes_for_the_weather?embed_host=notion&kind=&node-id=4%3A2&scaling=min-zoom)
-
-### Github organization
-- [👉 Github Link](https://github.com/perfect-clothes)
-
-### Homepage
-- [👉 Notion Link](https://www.notion.so/huijooooo/Perfect-Clothes-for-the-Weather-f0c2294664244404871603bf336f0322)
+- [Figma Link](https://www.figma.com/proto/naG6gaAEaDOcrGQS4Dfboq/Perfect_Clothes_for_the_weather?embed_host=notion&kind=&node-id=4%3A2&scaling=min-zoom)
 <br>
 
 ## 🧑‍💻 Skills
