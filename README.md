@@ -1,7 +1,9 @@
 # Perfect Clothes for the Weather
 
-## 🖇 URL
-- [👉 Go to our Website](http://weatherwear.tk/)
+## 🖇 Link
+- [✨ Our Website URL ✨](http://weatherwear.tk/)
+- [Github Organization](https://github.com/perfect-clothes)
+- [Notion Workspace](https://www.notion.so/huijooooo/Perfect-Clothes-for-the-Weather-f0c2294664244404871603bf336f0322)
 <br>
 
 ## ⛳️ Purpose
@@ -19,15 +21,12 @@
 2. **Weather check (날씨 확인)**
     - Current weather in your area (해당 지역의 현재 날씨)
     - All weather in the area every 3 hours (해당 지역의 날씨를 3시간 마다)
-    - Allow user location permission to check the weather at that location (사용자 위치 권한을 허용하면 그 위치의 날씨 확인 가능)
+    - Allow user location permission to check the weather at that location<br>(사용자 위치 권한을 허용하면 그 위치의 날씨 확인 가능)
     - City search available (도시 검색으로 원하는 도시의 날씨 확인)
 3. **Weather news (날씨 관련 기사 확인)**
 
 ### Prototype
-- [👉 Figma Link](https://www.figma.com/proto/naG6gaAEaDOcrGQS4Dfboq/Perfect_Clothes_for_the_weather?embed_host=notion&kind=&node-id=4%3A2&scaling=min-zoom)
-
-### Team Organization
-- [👉 Github Link](https://github.com/perfect-clothes)
+- [Figma Link](https://www.figma.com/proto/naG6gaAEaDOcrGQS4Dfboq/Perfect_Clothes_for_the_weather?embed_host=notion&kind=&node-id=4%3A2&scaling=min-zoom)
 <br>
 
 ## 🧑‍💻 Skills
