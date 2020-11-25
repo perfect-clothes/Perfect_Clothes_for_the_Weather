@@ -1,19 +1,19 @@
 # Perfect Clothes for the Weather
 
-## Purpose
+## 🖇 URL
+- [👉 Go to our Website](http://weatherwear.tk/)
+<br>
 
+## ⛳️ Purpose
 - Server-Client communication exercise (서버-클라이언트 통신 연습)
 - Collaborative development with Git (Git을 사용한 개발 협업)
+<br>
 
-
-## About
-
+## 💡 About
 ### Subject
-
 - Recommend clothes for the weather (날씨에 맞춰 옷 추천하기)
 
 ### Features
-
 1. **Recommend clothes for the weather (날씨에 맞는 옷차림 추천)**
     - Clothes for the current weather (현재 날씨에 맞는 옷)
 2. **Weather check (날씨 확인)**
@@ -28,8 +28,9 @@
 
 ### Team Organization
 - [👉 Github Link](https://github.com/perfect-clothes)
+<br>
 
-## Skills
+## 🧑‍💻 Skills
 ### Programming
 - React.js
 - Node.js
@@ -41,3 +42,32 @@
 - AWS EC2
 - Jenkins
 - Github
+<br>
+
+## 🚗 How to run
+- Since the server is on AWS's EC2, there is no need to run the server locally.<br>
+(서버가 AWS의 EC2에 있기 때문에, 로컬에서 서버를 구동시킬 필요가 없습니다.)
+- You can also use **npm** instead of **yarn**.<br>
+(**yarn** 대신 **npm**을 사용할 수 있습니다.)
+```bash
+# Go to the 'client' directory
+cd client
+
+# Install the dependancies
+yarn install
+
+# Start the project
+yarn start
+```
+- If you want to run the server locally, do the following:<br>
+(만약 서버를 로컬에서 구동 시키고 싶다면, 아래와 같이 하세요.)
+```bash
+# Go to the 'server' directory
+cd server
+
+# Install the dependancies
+npm install
+
+# Run the server
+node app.js
+```
