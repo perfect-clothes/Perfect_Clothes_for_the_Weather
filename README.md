@@ -1,14 +1,14 @@
 # Perfect Clothes for the Weather
 
-## URL
+## 🖇 URL
 - [👉 Go to our Website](http://weatherwear.tk/)
 
-## Purpose
+## ⛳️ Purpose
 - Server-Client communication exercise (서버-클라이언트 통신 연습)
 - Collaborative development with Git (Git을 사용한 개발 협업)
 
 
-## About
+## 💡 About
 ### Subject
 - Recommend clothes for the weather (날씨에 맞춰 옷 추천하기)
 
@@ -28,7 +28,7 @@
 ### Team Organization
 - [👉 Github Link](https://github.com/perfect-clothes)
 
-## Skills
+## 🧑‍💻 Skills
 ### Programming
 - React.js
 - Node.js
@@ -41,7 +41,7 @@
 - Jenkins
 - Github
 
-## How to run
+## 🚗 How to run
 - Since the server is on AWS's EC2, there is no need to run the server locally.<br>
 (서버가 AWS의 EC2에 있기 때문에, 로컬에서 서버를 구동시킬 필요가 없습니다.)
 - You can also use **npm** instead of **yarn**.<br>
