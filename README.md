@@ -26,8 +26,11 @@
 ### Prototype
 - [👉 Figma Link](https://www.figma.com/proto/naG6gaAEaDOcrGQS4Dfboq/Perfect_Clothes_for_the_weather?embed_host=notion&kind=&node-id=4%3A2&scaling=min-zoom)
 
-### Team Organization
+### Github organization
 - [👉 Github Link](https://github.com/perfect-clothes)
+
+### Homepage
+- [👉 Notion Link](https://www.notion.so/huijooooo/Perfect-Clothes-for-the-Weather-f0c2294664244404871603bf336f0322)
 <br>
 
 ## 🧑‍💻 Skills
