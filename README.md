@@ -21,7 +21,7 @@
 2. **Weather check (날씨 확인)**
     - Current weather in your area (해당 지역의 현재 날씨)
     - All weather in the area every 3 hours (해당 지역의 날씨를 3시간 마다)
-    - Allow user location permission to check the weather at that location (사용자 위치 권한을 허용하면 그 위치의 날씨 확인 가능)
+    - Allow user location permission to check the weather at that location<br>(사용자 위치 권한을 허용하면 그 위치의 날씨 확인 가능)
     - City search available (도시 검색으로 원하는 도시의 날씨 확인)
 3. **Weather news (날씨 관련 기사 확인)**
 
