@@ -44,8 +44,8 @@
 <br>
 
 ## 🚗 How to run
-- Since the server is on AWS's EC2, there is no need to run the server locally.<br>
-(서버가 AWS의 EC2에 있기 때문에, 로컬에서 서버를 구동시킬 필요가 없습니다.)
+- Since the server is on AWS's EC2, You don't have to run the server locally.<br>
+(서버가 AWS의 EC2에 있기 때문에, 로컬에서 서버를 구동시키지 않아도 됩니다.)
 - You can also use **npm** instead of **yarn**.<br>
 (**yarn** 대신 **npm**을 사용할 수 있습니다.)
 ```bash
