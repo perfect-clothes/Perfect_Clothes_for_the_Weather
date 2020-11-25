@@ -2,11 +2,12 @@
 
 ## 🖇 URL
 - [👉 Go to our Website](http://weatherwear.tk/)
+<br>
 
 ## ⛳️ Purpose
 - Server-Client communication exercise (서버-클라이언트 통신 연습)
 - Collaborative development with Git (Git을 사용한 개발 협업)
-
+<br>
 
 ## 💡 About
 ### Subject
@@ -27,6 +28,7 @@
 
 ### Team Organization
 - [👉 Github Link](https://github.com/perfect-clothes)
+<br>
 
 ## 🧑‍💻 Skills
 ### Programming
@@ -40,6 +42,7 @@
 - AWS EC2
 - Jenkins
 - Github
+<br>
 
 ## 🚗 How to run
 - Since the server is on AWS's EC2, there is no need to run the server locally.<br>
