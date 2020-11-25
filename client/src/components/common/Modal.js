@@ -15,7 +15,7 @@ const Background = styled.div `
 `;
 
 const Box = styled.div `
-    width: 300px;
+    width: 350px;
     padding: 2rem;
     background: white;
     border-radius: 4px;
